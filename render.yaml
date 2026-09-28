@@ -1,0 +1,53 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# MySQL is hosted outside Render (Render has no MySQL; its free Postgres expires after 30 days).
+services:
+  - type: web
+    name: laravel-sample
+    runtime: docker
+    plan: free
+    dockerfilePath: ./sample-app/Dockerfile
+    dockerContext: ./sample-app
+    healthCheckPath: /up
+    buildFilter:
+      paths:
+        - sample-app/**
+    envVars:
+      - key: APP_NAME
+        value: Laravel Sample
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: info
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      # CA certificate of the MySQL provider, uploaded as a Render Secret File named ca.pem
+      - key: MYSQL_ATTR_SSL_CA
+        value: /etc/secrets/ca.pem
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: DB_BACKUP_USER
+        value: admin
+      - key: DB_BACKUP_PASSWORD
+        generateValue: true

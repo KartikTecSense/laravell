@@ -1,0 +1,7 @@
+{
+  "tool_name": "PowerShell",
+  "tool_input_preview": "{\"command\":\"cd D:\\\\That-Time-Git\\\\laravell\\\\sample-app\\nphp -r \\\"new PDO('mysql:host=127.0.0.1','root','')->exec('CREATE DATABASE IF NOT EXISTS render_test');\\\" ; \\\"create=$LASTEXITCODE\\\"\\n$env:DB_CON...",
+  "error": "Exit code 1\nInvoke-Expression : At line:15 char:68\r\n+ ...  -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }\r\n+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\nThe string is missing the terminator: '.\r\nAt line:1 char:111\r\n+ ... UNCHER_SCRIPT = $null; Invoke-Expression -Command $__claudeCodeScript\r\n+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ParserError: (:) [Invoke-Expression], ParseExcep...",
+  "timestamp": "2026-09-28T11:42:07.475Z",
+  "retry_count": 1
+}
