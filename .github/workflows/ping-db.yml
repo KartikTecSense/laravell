@@ -1,0 +1,14 @@
+# Keeps the Aiven free-plan MySQL active so it isn't powered off for inactivity.
+name: Ping database
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # every 6 hours (UTC)
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      # Render's free plan sleeps when idle, so allow time for a cold start.
+      - run: curl --fail --silent --show-error --retry 3 --retry-delay 30 --max-time 120 https://laravell-90as.onrender.com/ping-db
